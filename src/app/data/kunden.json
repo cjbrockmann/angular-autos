@@ -5,7 +5,7 @@
     "Vorname": "Hans",
     "Anrede": "Herr",
     "PLZ": "65000",
-    "Stadt": "Wiesbaden",
+    "Ort": "Wiesbaden",
     "Email": "jemand@007.de",
     "Telefon": "45454545"
   },
@@ -15,7 +15,7 @@
     "Vorname": "Anna Maria",
     "Anrede": "Frau",
     "PLZ": "65000",
-    "Stadt": "Wiesbaden",
+    "Ort": "Wiesbaden",
     "Email": "nochjemand@007.de"
   },
   {
@@ -24,16 +24,16 @@
     "Vorname": "Didi",
     "Anrede": "Herr",
     "PLZ": "89000",
-    "Stadt": "München",
+    "Ort": "München",
     "Email": "komiker@654.de",
     "Telefon": "3456789"
   },
   {
     "ID": 4,
     "Nachname": "Otto",
-    "Anrede": "Herr",
+    "Anrede": "",
     "PLZ": "89000",
-    "Stadt": "München",
+    "Ort": "München",
     "Email": "komiker@123.de",
     "Telefon": "11111111"
   }

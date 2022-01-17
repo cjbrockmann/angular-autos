@@ -36,4 +36,9 @@ export class AutosComponent implements OnInit {
       this.firstLabel = 'Alle anzeigen';
     }
   }
+
+  RR(val) {
+    if (val) return val;
+    return '';
+  }
 }

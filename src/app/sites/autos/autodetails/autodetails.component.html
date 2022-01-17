@@ -37,12 +37,12 @@
         <td>{{ auto.Fahrgestellnummer }}</td>
       </tr>
       <tr>
-        <th>KundenID</th>
-        <td>{{ auto.KundenID }}</td>
+        <th>Kunde</th>
+        <td>{{ auto.Kunde }}</td>
       </tr>
       <tr>
-        <th>HaendlerID</th>
-        <td>{{ auto.HaendlerID }}</td>
+        <th>H&auml;ndler</th>
+        <td>{{ auto.Haendler }}</td>
       </tr>
       <tr>
         <th>Erstzulassung</th>
@@ -104,17 +104,39 @@
       <tr>
         <th>KundenID</th>
         <td>
-          <input type="text" class="form-control" [(ngModel)]="auto.KundenID" />
+          <select
+            name="kunde"
+            type="text"
+            class="form-select"
+            [(ngModel)]="auto.KundenID"
+          >
+            <option value="">Bitte wählen</option>
+            <option
+              *ngFor="let h of kunden; let i = index"
+              [value]="kunden[i].ID"
+            >
+              {{ RR(kunden[i].Vorname) + ' ' + RR(kunden[i].Nachname) }}
+            </option>
+          </select>
         </td>
       </tr>
       <tr>
-        <th>HaendlerID</th>
+        <th>Haendler</th>
         <td>
-          <input
+          <select
+            name="haendler"
             type="text"
-            class="form-control"
+            class="form-select"
             [(ngModel)]="auto.HaendlerID"
-          />
+          >
+            <option value="">Bitte wählen</option>
+            <option
+              *ngFor="let h of haendler; let i = index"
+              [value]="haendler[i].ID"
+            >
+              {{ haendler[i].Firmenname }}
+            </option>
+          </select>
         </td>
       </tr>
       <tr>

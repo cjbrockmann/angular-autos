@@ -1,6 +1,11 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { GlobalConstants, CARS } from '../../../global-constants';
+import {
+  GlobalConstants,
+  CARS,
+  HAENDLER,
+  KUNDE,
+} from '../../../global-constants';
 
 @Component({
   selector: 'app-autodetails',
@@ -15,6 +20,8 @@ export class AutodetailsComponent implements OnInit {
   editmodus: boolean = false;
   message: string = '';
   errorMessage: string = '';
+  haendler: HAENDLER[];
+  kunden: KUNDE[];
 
   private selectedId: number = 0;
 
@@ -23,7 +30,28 @@ export class AutodetailsComponent implements OnInit {
     if (selID && !isNaN(selID as any)) this.selectedId = parseInt(selID);
 
     let view = this.route.snapshot.queryParamMap.get('viewstate') || 'details';
+
+    this.haendler = GlobalConstants.HaendlerList;
+    this.kunden = GlobalConstants.KundenList;
+
     this.selectAction(view);
+  }
+
+  RR(val) {
+    if (val) return val;
+    return '';
+  }
+
+  haendlerZuweisen() {
+    let tmpH = this.haendler.filter((h) => h.ID == this.auto.HaendlerID);
+    if (tmpH && tmpH.length) this.auto.Haendler = tmpH[0].Firmenname;
+  }
+
+  kundeZuweisen() {
+    let tmpK = this.kunden.filter((k) => k.ID == this.auto.KundenID);
+    if (tmpK && tmpK.length)
+      this.auto.Kunde =
+        this.RR(tmpK[0].Vorname) + ' ' + this.RR(tmpK[0].Nachname);
   }
 
   autoLaden() {
@@ -31,6 +59,8 @@ export class AutodetailsComponent implements OnInit {
 
     if (autos.length > 0) {
       this.auto = { ...autos[0] };
+      this.haendlerZuweisen();
+      this.kundeZuweisen();
     }
     if (autos.length == 0) {
       this.auto = {} as CARS;
@@ -61,15 +91,18 @@ export class AutodetailsComponent implements OnInit {
     if (action == 'save') {
       var isNew: boolean = false;
       var tmp = GlobalConstants.CarList.filter((c) => c.ID == this.auto.ID);
-      console.log(this.auto);
       if (this.auto.Marke) {
         if (tmp.length == 0) {
+          this.haendlerZuweisen();
+          this.kundeZuweisen();
           GlobalConstants.CarList.push(this.auto);
           this.viewstate = 'details';
           this.editmodus = false;
           this.message = 'Datensatz hinzugefügt!';
         }
         if (tmp.length > 0) {
+          this.haendlerZuweisen();
+          this.kundeZuweisen();
           GlobalConstants.CarList = GlobalConstants.CarList.filter(
             (c) => c.ID != this.auto.ID
           );

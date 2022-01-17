@@ -12,11 +12,13 @@ import { PersonComponent } from './sites/person/person.component';
 import { AutosComponent } from './sites/autos/autos.component';
 import { AutodetailsComponent } from './sites/autos/autodetails/autodetails.component';
 import { HomeComponent } from './sites/home/home.component';
-import { CARS, GlobalConstants } from './global-constants';
+import { CARS, HAENDLER, KUNDE, GlobalConstants } from './global-constants';
 
 declare var require: any;
 
 var myCars: CARS[] = require('./data/autos.json');
+var myHaendler: HAENDLER[] = require('./data/haendler.json');
+var myKunden: KUNDE[] = require('./data/kunden.json');
 
 @NgModule({
   imports: [
@@ -40,6 +42,8 @@ var myCars: CARS[] = require('./data/autos.json');
 export class AppModule {
   constructor() {
     GlobalConstants.CarList = myCars;
+    GlobalConstants.HaendlerList = myHaendler;
+    GlobalConstants.KundenList = myKunden;
     // console.log(GlobalConstants.CarList);
   }
 }
