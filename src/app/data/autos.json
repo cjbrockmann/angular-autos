@@ -21,12 +21,12 @@
   },
   {
     "ID": 3,
-    "Marke": "Opel",
-    "Modell": "Manta",
-    "Fahrgestellnummer": "456334-OLDTIMER-UDL",
+    "Marke": "Quant",
+    "Modell": "<b>Quantino</b> (Flusszellenantrieb)",
+    "Fahrgestellnummer": "1234567890123456789",
     "KundenID": 1,
     "HaendlerID": 5,
-    "Erstzulassung": "1997-01-01",
+    "Erstzulassung": "2018-06-25",
     "ErstKennzeichen": "F-AZ 410"
   },
   {
